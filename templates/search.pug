@@ -1,0 +1,12 @@
+extend layout.pug
+block content 
+    h1 Résultats de la Recherche pour #{artistName}
+        if artistData
+            p Nom de l'artiste: #{artistData.name}
+            p Nombre d'albums: #{artistData.nb_album}
+            p Lien Deezer: #{artistData.link}
+            p ID: #{artistData.id}
+            p
+                img(src=artistData.picture_big, alt='img artiste')
+        
+        

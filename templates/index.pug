@@ -1,0 +1,6 @@
+extend layout.pug
+block content 
+    h1 Recherche des caractéristiques objet artist API Deezer
+        form(action="/search", method="post")
+            input(type="text", name="artist", placeholder="Nom de l'artiste")
+            button(type="submit") Rechercher
