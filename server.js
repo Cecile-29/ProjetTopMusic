@@ -4,7 +4,7 @@ const app = express();
 require('dotenv').config();
 
 app.set('view engine', 'pug');
-app.set('views', './templates');
+app.set('views', './views');
 
 app.use(express.urlencoded({ extended: true }));
 
