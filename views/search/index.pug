@@ -1,40 +1,3 @@
-//- extend ../layout
-//- block content 
-    //- h1 Recherche artistes API Deezer
-    //-     form(action="/search", method="post")
-    //-         input(type="text", name="artist", placeholder="Nom de l'artiste")
-    //-         button(type="submit") Rechercher
-    //- if artistData
-    //-     h2 Résultats de la Recherche pour #{artistName}
-    //-         if artistData
-    //-             p Nom de l'artiste: #{artistData.name}
-    //-             p Nombre d'albums: #{artistData.nb_album}
-    //-             p Lien Deezer: #{artistData.link}
-    //-             p ID: #{artistData.id}
-    //-             p
-    //-                 img(src=artistData.picture_big, alt='img artiste')
-
-//- extends ../layout
-
-//- block content
-//-     .container.mt-4
-//-         h1 Ajouter une musique
-//-         form(action="/search", method="get")
-//-             input(type="text", name="keyword", placeholder="Chercher une musique")
-//-             button(type="submit") Rechercher
-
-//-         if musics
-//-             h2 Résultats de la Recherche pour #{keyword}
-//-                 each music in musics
-//-                     div
-//-                         p Titre de la chanson: #{music.title}
-//-                         p Artiste: #{music.artist_name}
-//-                         p
-//-                             img(src=music.cover, alt='Couverture de l\'album')
-
-//-         else
-//-             p Aucun résultat trouvé pour #{keyword}
-
 extends ../layout
 
 block content
@@ -55,13 +18,16 @@ block content
                             p Titre de la chanson: #{track.title}
                             p Artiste: #{track.artist_name}
                             .track-button-actions
-                                form(method="post")                                            
-                                    input(type="hidden" name="id_rapid_api_deezer" value=track.id_rapid_api_deezer)
-                                    input(type="hidden" name="title" value=track.title)
-                                    input(type="hidden" name="artist_name" value=track.artist_name)
-                                    input(type="hidden" name="cover" value=track.cover)
-                                    input(type="hidden" name="preview" value=track.preview)
-                                    button.btn.btn-secondary(type="submit") Ajouter cette musique
+                                if track.exists == false
+                                    form(method="post")                                            
+                                        input(type="hidden" name="id_rapid_api_deezer" value=track.id_rapid_api_deezer)
+                                        input(type="hidden" name="title" value=track.title)
+                                        input(type="hidden" name="artist_name" value=track.artist_name)
+                                        input(type="hidden" name="cover" value=track.cover)
+                                        input(type="hidden" name="preview" value=track.preview)
+                                        button.btn.btn-secondary(type="submit") Ajouter cette musique
+                                else
+                                    button.btn.btn-danger(type="submit") Cette musique est déjà ajoutée
         else
             p Aucun résultat trouvé pour #{keyword}
 

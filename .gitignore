@@ -26,7 +26,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-*public\covers
-
+public/covers
 
 .browser-refresh-ignore
