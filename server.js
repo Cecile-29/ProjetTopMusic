@@ -67,11 +67,13 @@ app.use(express.urlencoded({extended: false}));
 //      Envoi information à la vue
 //--------------------------------------------------------------------
 app.use((req,res,next) => {
-    res.locals.app = {
-        route : '/'
-    };
-    next();
+  res.locals.app = {
+      route : req._parsedUrl.pathname,
+      user: req.session.user || {}
+  };
+  next();
 });
+
 
 
 

@@ -1,3 +1,3 @@
 exports.get = (request, response) => {
-    response.render('index');
+    response.render('home/index');
 }

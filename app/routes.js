@@ -36,6 +36,7 @@ const auth = require('../src/controllers/AuthenticationController.js');
 module.exports = (app) => {
     app.get('/', home.get)
     app.get('/search',  search.get)
+    app.post('/search',  search.post)
 
     app.get('/inscription', register.get)
     app.post('/inscription', register.post)
